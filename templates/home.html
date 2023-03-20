@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="user">
+        {% if current_user.is_authenticated %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    {{current_user.name }}
+                </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% if current_user.admin == 1 %}
+                    <li><a class="dropdown-item" href="/">Изменить</a></li>
+                    <li><a class="dropdown-item" href="/logout">Выйти</a></li>
+                {% else %}
+                    <li><a class="dropdown-item" href="/logout">Выйти</a></li>
+                {% endif %}
+            </ul>
+            </div>
+        {% else %}
+             <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    User
+                </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="/register">Зарегистрироваться</a></li>
+                <li><a class="dropdown-item" href="/login">Войти</a></li>
+            </ul>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
