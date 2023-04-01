@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+        <title>Яндекс</title>
+    </head>
+    <body>
+        {% set company_history_database = company_history_database %}
+        {% set achievements_database = achievements_database %}
+        {% set developers_database = developers_database %}
+        <header>
+            <div class="header_container">
+                <div class="img_menu">
+                    <img src="/static/img/href_menu.png">
+                </div>
+                <div class="navbar_ navbar-light container">
+                    <div class="header_button_1 navbar-brand font_size_button">
+                        <button  type="button" name="button_1" onclick="buttonClick(this)" value="{{achievements_database}}">
+                            Достижения
+                        </button>
+                    </div>
+                    <div  class="header_button_2 navbar-brand">
+                        <button type="button" name="button_2"  onclick="buttonClick(this)" value="{{developers_database}}">
+                            Разработчики
+                        </button>
+                    </div>
+                    <div class="header_button_3 navbar-brand">
+                        <button  type="button" name="button_3"  onclick="buttonClick(this)" value="{{company_history_database}}">
+                            История компании
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <img src="/static/img/profile.png">
+                </div>
+            </div>
+            <div>
+                <img src="/static/img/background-img.png" class="background_image_header">
+            </div>
+        </header>
+        <main>
+        {% block content %}
+        {% endblock %}
+        </main>
+        <footer>
+            <div class="footer_template navbar_ navbar-light">
+                <div class="telegram_img">
+                    <img src="static/img/telegram_bot.png">
+                </div>
+                <div class="button_comments">
+                    <button type="button">
+                        коментарии
+                    </button>
+                </div>
+            </div>
+        </footer>
+        <script src="../static/javascript/script.js"></script>
+    </body>
+</html>
