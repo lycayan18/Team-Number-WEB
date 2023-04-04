@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+        <title>{{name}}</title>
+    </head>
+    <body>
+        {% set text_database = text_database %}
+        <header>
+            <div class="header_container">
+                <div class="img_menu">
+                    <a href="/home">
+                    <img src="/static/img/href_menu.png">
+                    </a>
+                </div>
+                <div class="navbar_ navbar-light container">
+                    <div class="header_button_1 navbar-brand font_size_button">
+                        <form action="/home/google">
+                            <button  type="submit" name="button_1">
+                                Google
+                            </button>
+                        </form>
+                    </div>
+                    <div  class="header_button_2 navbar-brand font_size_button">
+                        <form action="/home/yandex">
+                            <button type="submit" name="button_2">
+                                Яндекс
+                            </button>
+                        </form>
+                    </div>
+                    <div class="header_button_3 navbar-brand font_size_button">
+                        <form action="/home/openai">
+                            <button  type="submit" name="button_3">
+                                Openai
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <img src="/static/img/profile.png">
+                </div>
+            </div>
+            <div>
+                <img src="/static/img/background-img.png" class="background_image_header">
+            </div>
+        </header>
+        <main>
+            <div class="media_text_block1 top">
+                <div class="text-block_1 navbar_">
+                    <h2>
+                        {{text_database[0][0]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="text-block_1 media-body">
+                        {{text_database[0][1].split(" ::: ")[0]}}
+                    </div>
+                    <div class="media-right ads font">
+                        <img src='{{text_database[0][1].split(" ::: ")[1]}}' style="width: 100%; height:100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="media_text_block2 top">
+                <div class="text-block_2 navbar_">
+                    <h2>
+                        {{text_database[1][0]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="media-left ads font">
+                        <img src='{{text_database[1][1].split(" ::: ")[1]}}' style="width: 100%;">
+                    </div>
+                    <div class="text-block_2 media-body">
+                        {{text_database[1][1].split(" ::: ")[0]}}
+                    </div>
+                </div>
+            </div>
+            <div  class="media_text_block3 top">
+                <div class="top text-block_3 navbar_">
+                    <h2>
+                        {{text_database[2][0]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="text-block_3 media-body">
+                        {{text_database[2][1].split(" ::: ")[0]}}
+                    </div>
+                    <div class="media-right ads font">
+                        <img src='{{text_database[2][1].split(" ::: ")[1]}}' style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer_template navbar_ navbar-light">
+                <div class="telegram_img">
+                    <img src="static/img/telegram_bot.png">
+                </div>
+                <div class="button_comments">
+                    <button type="button">
+                        коментарии
+                    </button>
+                </div>
+            </div>
+        </footer>
+        <script src="../static/javascript/script.js"></script>
+    </body>
+</html>
