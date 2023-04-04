@@ -22,7 +22,7 @@ section{
     background-size: cover;
 }
 .form-box-login{
-    position: relative;
+    position: fixed;
     width: 400px;
     height: 450px;
     background: transparent;
@@ -35,7 +35,7 @@ section{
 
 }
 .form-box-register{
-    position: relative;
+    position: fixed;
     width: 400px;
     height: 540px;
     background: transparent;
@@ -138,4 +138,20 @@ button{
 .message-error{
     margin-top: 10px;
     color: #fff;
+}
+.container{
+    position: relative;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    align-self: flex-start;
+    margin-top: 20px;
+    float: left;
+}
+.languages__btn{
+    display: flex;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+
 }
