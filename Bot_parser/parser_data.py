@@ -25,12 +25,6 @@ def parser_data_post(link_post, bot, channel_id):
 
     title = post.find("h1").text.strip()
     description = post.find("div", class_="cm-article__content js-article-content wb-bw").text.strip()
+    text_post = f"""<b>{title}</b>\n\n{description}\n\nhttps://timeweb.com{link_post}"""
 
-    text_post = f"""
-            {title}\n
-            {description}\n
-            https://timeweb.com{link_post}
-                """
-
-    bot.send_message(channel_id, text_post)
-
+    bot.send_message(channel_id, text_post, parse_mode='html')
