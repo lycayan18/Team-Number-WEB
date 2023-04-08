@@ -1,0 +1,130 @@
+body {
+    font-family: "Comfortaa";
+}
+.header_container {
+    display:flex; align-items:center;
+}
+.background-header {
+    text-align: center;
+    font-size: 42px;
+}
+div#tekst_sverhu_kartinki {
+position: relative;
+}
+h1 {
+    font-size: 58px;
+}
+.tekst_sverhu_kartinki {
+    position: absolute;
+    padding-top: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.navbar_ {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 3rem 4.5rem;
+}
+button{
+    width: 270px;
+    height: 60px;
+    border: 1px;
+    border-radius: 30px;
+}
+.font_size_button {
+    font-size: 22px;
+}
+
+.img_menu {
+    margin-right: 5.5rem;
+}
+
+.background_image_header {
+    background: #ffffff url("/static/img/background-img.png") center;
+    margin-top: 15px;
+    width: 100%;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
+     pointer-events: none;
+}
+
+
+.top {
+    margin-top: 140px;
+}
+
+.footer_template {
+    margin-top: 200px;
+    padding: 10px;
+    background-color: #c8cccd;
+}
+
+.button_comments {
+    text-align: right;
+}
+
+.telegram_img {
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.button_comments {
+    font-size: 34px;
+    padding-top: 1px;
+    padding-right: 30px;
+}
+
+.text-block-1, .text-block-2, text-block-3{
+    max-width: 62rem;
+}
+.media_text_block1, .media_text_block2, .media_text_block3, yandex_text_block2, yandex_text_block3 {
+    box-shadow: inset -10px -10px 10px 20px white;
+}
+.media_text_block1 {
+    background: radial-gradient(#fffed8, #ffffff);
+}
+
+.media_text_block2 {
+    background: radial-gradient(#ffe4ec, #ffffff);
+}
+
+.media_text_block3 {
+    background: radial-gradient(#ebf3ff, #ffffff);
+}
+
+h2 {
+    font-size: 65px;
+}
+
+.media-body {
+    font-size: 36px;
+    padding-top: 10px;
+}
+.media-right {
+    padding-left: 10px;
+}
+.media-left {
+    margin-right: 40px;
+}
+
+.ads {
+   display: table-caption;
+}
+
+.font {
+    width: 100%;
+    max-width: 50%;
+}

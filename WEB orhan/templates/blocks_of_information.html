@@ -1,0 +1,49 @@
+{% extends "template_for_companies.html" %}
+
+{% block content %}
+<div id="1" class="media_text_block1 text-block_1 top">
+    <div class="text-block-1 navbar_">
+        <h2  id="text_one">
+            {{achievements_database[1]}}
+        </h2>
+    </div>
+    <div class="navbar_ media">
+        <div id="block1" class="text-block-1 media-body">
+            {{achievements_database[2]}}
+        </div>
+        <div class="media-right ads font">
+            <img id="photo_one" src='{{photo_database[0]}}' style="width: 100%; height:100%;">
+        </div>
+    </div>
+</div>
+<div id="two" class="media_text_block2 text-block_2 top">
+    <div class="text-block-2 navbar_">
+        <h2 id="text_two">
+            {{achievements_database[3]}}
+        </h2>
+    </div>
+    <div class="navbar_ media">
+        <div class="media-left ads font">
+            <img id="photo_two" src='{{photo_database[1]}}' style="width: 100%;">
+        </div>
+        <div  id="block2" class="text-block-2 media-body">
+            {{achievements_database[4]}}
+        </div>
+    </div>
+</div>
+<div id="3" class="media_text_block3 text-block_3 top">
+    <div class="top text-block-3 navbar_">
+        <h2  id="text_three">
+            {{achievements_database[5]}}
+        </h2>
+    </div>
+    <div class="navbar_ media">
+        <div id="block3" class="text-block-3 media-body">
+            {{achievements_database[6]}}
+        </div>
+        <div class="media-right ads font">
+            <img id="photo_three" src='{{photo_database[2]}}' style="width: 100%;">
+        </div>
+    </div>
+</div>
+{% endblock %}
