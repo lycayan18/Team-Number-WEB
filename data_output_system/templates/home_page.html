@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}<title>Главная</title>{% endblock %}
+{% block content %}
+        <header>
+            <div class="header_container">
+                <div class="img_menu">
+                    <img src="/static/img/profile.png">
+                </div>
+                <div class="navbar_ navbar-light container">
+                    <div class="font_size_button">
+                        <a href="/google/achievements"><button>Google</button></a>
+                    </div>
+                    <div  class="header_button_2 navbar-brand font_size_button">
+                       <a href="/yandex/achievements"><button>Yandex</button></a>
+                    </div>
+                    <div class="header_button_3 navbar-brand font_size_button">
+                        <a href="/openai/achievements"><button>OpenAI</button></a>
+                    </div>
+                </div>
+                <div>
+                    <a href="/">
+                    <img src="/static/img/href_menu.png">
+                    </a>
+                </div>
+            </div>
+            <div id="tekst_sverhu_kartinki">
+                <img src="/static/img/background-img.png" class="background_image_header">
+                <div class="tekst_sverhu_kartinki"><h1>ВСЕ О МИРЕ IT</h1></div>
+            </div>
+        </header>
+        <main>
+            <div class="media_text_block1 text-block_1 top">
+                <div class="text-block-1 navbar_">
+                    <h2>
+                        {{home_text[0]["title"]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="text-block-1 media-body">
+                        {{home_text[0]["description"]}}
+                    </div>
+                    <div class="media-right ads font">
+                        <img src='{{home_text[0]["img"]}}' style="width: 100%; height:100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="media_text_block2  text-block_2 top">
+                <div class="text-block-2 navbar_">
+                    <h2>
+                        {{home_text[1]["title"]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="text-block-2 media-body">
+                        {{home_text[1]["description"]}}
+                    </div>
+                    <div class="media-left ads font">
+                        <img src='{{home_text[1]["img"]}}' style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+            <div  class="media_text_block3 text-block_3 top">
+                <div class="top text-block-3 navbar_">
+                    <h2>
+                        {{home_text[2]["title"]}}
+                    </h2>
+                </div>
+                <div class="navbar_ media">
+                    <div class="text-block-3 media-body">
+                        {{home_text[2]["description"]}}
+                    </div>
+                    <div class="media-right ads font">
+                        <img src='{{home_text[2]["img"]}}' style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer_template navbar_ navbar-light">
+                <div class="telegram_img">
+                    <img src="static/img/telegram_bot.png">
+                </div>
+                <div class="button_comments">
+                    <button type="button">
+                        коментарии
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+{% endblock %}
