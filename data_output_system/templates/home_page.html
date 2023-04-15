@@ -7,14 +7,14 @@
                     <img src="/static/img/profile.png">
                 </div>
                 <div class="navbar_ navbar-light container">
-                    <div class="font_size_button">
-                        <a href="/google/achievements"><button>Google</button></a>
+                    <div class="header_button_1 navbar-brand font_size_button">
+                        <a href="/google/achievements"><button class="button">Google</button></a>
                     </div>
                     <div  class="header_button_2 navbar-brand font_size_button">
-                       <a href="/yandex/achievements"><button>Yandex</button></a>
+                       <a href="/yandex/achievements"><button class="button">Yandex</button></a>
                     </div>
                     <div class="header_button_3 navbar-brand font_size_button">
-                        <a href="/openai/achievements"><button>OpenAI</button></a>
+                        <a href="/openai/achievements"><button class="button">OpenAI</button></a>
                     </div>
                 </div>
                 <div>
@@ -25,13 +25,13 @@
             </div>
             <div id="tekst_sverhu_kartinki">
                 <img src="/static/img/background-img.png" class="background_image_header">
-                <div class="tekst_sverhu_kartinki"><h1>ВСЕ О МИРЕ IT</h1></div>
+                <div class="tekst_sverhu_kartinki"><h1 class="text_header">ВСЕ О МИРЕ IT</h1></div>
             </div>
         </header>
         <main>
             <div class="media_text_block1 text-block_1 top">
                 <div class="text-block-1 navbar_">
-                    <h2>
+                    <h2 class="text_title">
                         {{home_text[0]["title"]}}
                     </h2>
                 </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="media_text_block2  text-block_2 top">
                 <div class="text-block-2 navbar_">
-                    <h2>
+                    <h2 class="text_title">
                         {{home_text[1]["title"]}}
                     </h2>
                 </div>
@@ -61,7 +61,7 @@
             </div>
             <div  class="media_text_block3 text-block_3 top">
                 <div class="top text-block-3 navbar_">
-                    <h2>
+                    <h2 class="text_title">
                         {{home_text[2]["title"]}}
                     </h2>
                 </div>
@@ -75,17 +75,4 @@
                 </div>
             </div>
         </main>
-        <footer>
-            <div class="footer_template navbar_ navbar-light">
-                <div class="telegram_img">
-                    <img src="static/img/telegram_bot.png">
-                </div>
-                <div class="button_comments">
-                    <button type="button">
-                        коментарии
-                    </button>
-                </div>
-            </div>
-        </footer>
-
 {% endblock %}

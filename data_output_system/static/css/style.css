@@ -1,4 +1,4 @@
-body {
+.text-body {
     font-family: "Comfortaa";
 }
 .header_container {
@@ -11,9 +11,11 @@ body {
 div#tekst_sverhu_kartinki {
 position: relative;
 }
-h1 {
+
+.text_header {
     font-size: 58px;
 }
+
 .tekst_sverhu_kartinki {
     position: absolute;
     padding-top: 100px;
@@ -31,14 +33,9 @@ h1 {
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 3rem 4.5rem;
+    padding: 3rem 4.5rem !important;
 }
-button{
-    width: 270px;
-    height: 60px;
-    border: 1px;
-    border-radius: 30px;
-}
+
 .font_size_button {
     font-size: 22px;
 }
@@ -70,6 +67,7 @@ img {
     margin-top: 200px;
     padding: 10px;
     background-color: #c8cccd;
+    padding: 1rem 1rem !important;
 }
 
 .button_comments {
@@ -105,7 +103,7 @@ img {
     background: radial-gradient(#ebf3ff, #ffffff);
 }
 
-h2 {
+.text_title {
     font-size: 65px;
 }
 
@@ -127,4 +125,11 @@ h2 {
 .font {
     width: 100%;
     max-width: 50%;
+}
+
+.button {
+    width: 270px;
+    height: 60px;
+    border: 1px;
+    border-radius: 30px;
 }
