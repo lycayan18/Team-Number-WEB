@@ -20,7 +20,6 @@ class Google(SqlAlchemyBase):
     title = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     description = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
-    alignment = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     img = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     key_appointments = sqlalchemy.Column(sqlalchemy.Integer)
 
@@ -33,7 +32,6 @@ class Yandex(SqlAlchemyBase):
     title = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     description = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
-    alignment = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     img = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     key_appointments = sqlalchemy.Column(sqlalchemy.Integer)
 
@@ -46,6 +44,5 @@ class OpenAI(SqlAlchemyBase):
     title = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     description = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
-    alignment = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     img = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     key_appointments = sqlalchemy.Column(sqlalchemy.Integer)

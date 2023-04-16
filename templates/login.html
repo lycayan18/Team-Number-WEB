@@ -13,7 +13,7 @@
             <div class="form-value">
                 <form action="" method="post">
                     {{ form.hidden_tag() }}
-                    <h2 data-lang="login_page_0">Авторизация</h2>
+                    <h2 data-lang="login_page_0" style="color:#ffffff">Авторизация</h2>
                     <div class="inputbox">
                         {{ form.email(type="email") }}
                         <label data-lang="login_page-1">{{ form.email.label }}</label>
@@ -21,10 +21,6 @@
                     <div class="inputbox">
                         {{ form.password(type="password") }}
                         <label data-lang="login_page-2">{{ form.password.label }}</label>
-                    </div>
-                    <div class="forget">
-                        <label >{{ form.remember_me() }} {{ form.remember_me.label }}</label>
-<!--                        <label data-lang="login_page-3">{{ form.remember_me() }} {{ form.remember_me.label }}</label>-->
                     </div>
                     <button type="submit" data-lang="login_page-4">Войти</button>
                     <div class="message-error">{{ message }}</div>

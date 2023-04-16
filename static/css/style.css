@@ -282,7 +282,9 @@ img {
     width: 100%;
     max-width: 50%;
 }
-
+.button-color {
+    background-color: #f0f0f0;
+}
 .button {
     width: 270px;
     height: 60px;
