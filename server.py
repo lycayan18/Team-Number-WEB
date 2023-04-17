@@ -188,9 +188,12 @@ def add_text(company, chapter):
     company_info = company_table
     if request.method == "POST":
         file = request.files['file']
-        filename = secure_filename(file.filename)
-        file.save(path.join(app.config['UPLOAD_FOLDER'], f'{company}/{filename}'))
-        company_info.img = f'/static/img/{company}/{file.filename}'
+        if file.filename != '':
+            filename = secure_filename(file.filename)
+            file.save(path.join(app.config['UPLOAD_FOLDER'], f'{company}/{filename}'))
+            company_info.img = f'/static/img/{company}/{file.filename}'
+        else:
+            company_info.img = f'/static/img/no_image.jpeg'
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         company_info = company_table
