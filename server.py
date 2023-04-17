@@ -1,8 +1,10 @@
+from os import environ
 import random
 
 from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, abort, request
 from flask_login import LoginManager, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
 
 
 from data import db_session
@@ -16,7 +18,9 @@ from helpers.name_correct import name_correct
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '123'
+app.config['SECRET_KEY'] = environ.get("KEY_APP")
+UPLOAD_FOLDER = '/static/img'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 login_manager = LoginManager()
 login_manager.init_app(app)
 load_dotenv()
@@ -186,12 +190,13 @@ def add_text(company, chapter):
         company = company_table
         company.title = form.title.data
         company.description = form.content.data
-        company.img = form.img.data
+        company.img = f'/static/img/{company}/{form.img.data}'
         company.key_appointments = key_appointments_company
         company.color = random.choice(["media_text_block1`", "media_text_block2", "media_text_block3"])
         db_sess.add(company)
         db_sess.commit()
         return redirect('/')
+
     return render_template("add_text.html", form=form)
 
 
