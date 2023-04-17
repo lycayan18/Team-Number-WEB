@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 **/__pycache__/**
 *.DS_Store*
+=======
+.env
+>>>>>>> 49137c8... Add app version: 2

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}<title>{{company}}</title>{% endblock %}
+{% block content %}
+        <header>
+            <div class="header_container">
+                <div class="img_menu">
+                    <img src="/static/img/profile.png">
+                    {% if current_user.is_authenticated %}
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                {{current_user.name }}
+                            </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% if current_user.admin == 1 %}
+                                <li><a class="dropdown-item" href="/add_text/{{company}}/{{chapter}}">Добавить</a></li>
+                                <li><a class="dropdown-item" href="/logout">Выйти</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="/logout">Выйти</a></li>
+                            {% endif %}
+                        </ul>
+                        </div>
+                    {% else %}
+                         <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                User
+                            </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/register">Зарегистрироваться</a></li>
+                            <li><a class="dropdown-item" href="/login">Войти</a></li>
+                        </ul>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="navbar_ navbar-light container">
+                    <div class="header_button_1 navbar-brand font_size_button">
+                        <a href="/{{company}}/achievements"><button  class="button button-color">Достижения</button></a>
+                    </div>
+                    <div  class="header_button_2 navbar-brand font_size_button">
+                        <a href="/{{company}}/developers"><button  class="button button-color">Разработчики</button></a>
+                    </div>
+                    <div class="header_button_3 navbar-brand font_size_button">
+                        <a href="/{{company}}/history"><button  class="button button-color">История компании</button></a>
+                    </div>
+                </div>
+                <div>
+                    <a href="/">
+                    <img src="/static/img/href_menu.png">
+                    </a>
+                </div>
+            </div>
+        </header>
+        {% for data in list_data %}
+        <div class="{{data[3]}} text-block_1 top">
+            <div class="text-block-1 navbar_">
+                <h2  class="text_title" id="text_one">
+                    {{data[0]}}
+                </h2>
+            </div>
+            <div class="navbar_ media">
+                <div id="block1" class="text-block-1 media-body">
+                    {{data[1]}}
+                </div>
+                <div class="{{data[4]}} ads font">
+                    <img id="photo_one" src='{{data[2]}}' style="width: 100%; height:100%;">
+                </div>
+            </div>
+        </div>
+        {% if current_user.admin == 1 %}
+            <div>
+                <a href="/editing_text/{{company}}/{{data[4]}}" class="btn btn-warning">
+                    Изменить
+                </a>
+                <a href="/delete_text/{{company}}/{{data[4]}}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+        <footer>
+            <div class="footer_template navbar_ navbar-light">
+                <div class="telegram_img">
+                    <img src="/static/img/telegram_bot.png">
+                </div>
+                <div class="button_comments">
+                    <a href="/comments">
+                        <button class="button" type="button">
+                            коментарии
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </footer>
+{% endblock %}
