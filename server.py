@@ -248,6 +248,12 @@ def delete_text(company, id):
     return redirect('/')
 
 
+
+@app.route("/comments")
+def title_comment():
+    return render_template("comment.html")
+
+
 def main():
     db_session.global_init("db/database.db")
 
