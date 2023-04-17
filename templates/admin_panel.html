@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Добавление новости</h1>
-<form action="" method="post">
+<h1>{{title}}</h1>
+<form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <p>
         {{ form.title.label }}<br>
@@ -16,11 +16,9 @@
     <p>
         {{ form.content.label }}<br>
         {{ form.content(class="form-control") }}<br>
-        {% for error in form.content.errors %}
-            <p content="alert alert-danger" role="alert">
-                {{ error }}
-            </p>
-        {% endfor %}
+    </p>
+    <p>
+         <input type="file" name="file">
     </p>
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
     {{message}}
