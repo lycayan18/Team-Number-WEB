@@ -1,4 +1,5 @@
-from os import environ
+from os import environ, path
+from os.path import join, dirname, realpath
 import random
 
 from dotenv import load_dotenv
@@ -12,18 +13,18 @@ from data.users import User
 from data.template_text import HomePage, Google, Yandex, OpenAI
 from forms.register import RegisterForm
 from forms.login import LoginForm
-from forms.admin import EditingForm, AddForms
+from forms.admin import EditingForm
 from helpers.password_correct import password_correct
 from helpers.name_correct import name_correct
 
-
+load_dotenv()
 app = Flask(__name__)
+UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'static/img/')
 app.config['SECRET_KEY'] = environ.get("KEY_APP")
-UPLOAD_FOLDER = '/static/img'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 login_manager = LoginManager()
 login_manager.init_app(app)
-load_dotenv()
 
 
 @app.route("/")
@@ -170,7 +171,7 @@ def history(company):
 
 @app.route("/add_text/<company>/<chapter>", methods=['GET', 'POST'])
 def add_text(company, chapter):
-    form = AddForms()
+    form = EditingForm()
     if company == "google":
         company_table = Google()
     elif company == "yandex":
@@ -184,20 +185,27 @@ def add_text(company, chapter):
         key_appointments_company = 2
     else:
         key_appointments_company = 3
-
+    company_info = company_table
+    if request.method == "POST":
+        file = request.files['file']
+        if file.filename != '':
+            filename = secure_filename(file.filename)
+            file.save(path.join(app.config['UPLOAD_FOLDER'], f'{company}/{filename}'))
+            company_info.img = f'/static/img/{company}/{file.filename}'
+        else:
+            company_info.img = f'/static/img/no_image.jpeg'
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        company = company_table
-        company.title = form.title.data
-        company.description = form.content.data
-        company.img = f'/static/img/{company}/{form.img.data}'
-        company.key_appointments = key_appointments_company
-        company.color = random.choice(["media_text_block1`", "media_text_block2", "media_text_block3"])
-        db_sess.add(company)
+        company_info = company_table
+        company_info.title = form.title.data
+        company_info.description = form.content.data
+        company_info.key_appointments = key_appointments_company
+        company_info.color = random.choice(["media_text_block1`", "media_text_block2", "media_text_block3"])
+        db_sess.add(company_info)
         db_sess.commit()
         return redirect('/')
 
-    return render_template("add_text.html", form=form)
+    return render_template("admin_panel.html", form=form, title="Добавление информации")
 
 
 @app.route('/editing_text/<company>/<int:id>', methods=['GET', 'POST'])
@@ -226,7 +234,7 @@ def editing_text(company, id):
             return redirect('/')
         else:
             abort(404)
-    return render_template("editing_text.html", form=form)
+    return render_template("admin_panel.html", form=form, title="Изменение информации")
 
 
 @app.route('/delete_text/<company>/<int:id>', methods=['GET', 'POST'])
@@ -246,7 +254,6 @@ def delete_text(company, id):
     else:
         abort(404)
     return redirect('/')
-
 
 
 @app.route("/comments")
