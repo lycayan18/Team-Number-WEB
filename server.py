@@ -256,7 +256,6 @@ def delete_text(company, id):
     return redirect('/')
 
 
-
 @app.route("/comments")
 def title_comment():
     return render_template("comment.html")
