@@ -1,4 +1,4 @@
-import {registerTexts, loginTexts} from "./text.js";
+import {registerTexts, loginTexts, home_pageTexts, companyTexts} from "./text.js";
 const langButtons = document.querySelectorAll("[data-btn]");
 const allLangs = ["ru", "en"];
 const currentPathName = window.location.pathname;
@@ -15,6 +15,14 @@ function checkPagePathName() {
             break;
         case "/login":
             currentTexts = loginTexts;
+            break;
+        case "/":
+            currentTexts = home_pageTexts;
+            break;
+        case "/yandex/achievements": case "/yandex/developers": case "/yandex/history": case "/openai/achievements":
+        case "/openai/developers": case "/openai/history": case "/google/achievements":
+        case "/google/developers": case "/google/history":
+            currentTexts = companyTexts;
             break;
     }
 }
