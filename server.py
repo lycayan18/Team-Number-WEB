@@ -1,4 +1,4 @@
-from os import environ, path
+from os import environ, path, remove
 from os.path import join, dirname, realpath
 import random
 
@@ -249,6 +249,7 @@ def delete_text(company, id):
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.id == id).first()
     if text:
+        remove(text.img[1:])
         db_sess.delete(text)
         db_sess.commit()
     else:
