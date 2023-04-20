@@ -127,5 +127,17 @@ export const companyTexts = {
     "comments-button": {
         ru: "коментарии",
         en: "comments",
+    },
+    "dropdown-item_achievements":{
+        ru: "Достижения",
+        en: "Achievements"
+    },
+    "dropdown-item_developers":{
+        ru: "Разработчики",
+        en: "Developers"
+    },
+    "dropdown-item_company_history":{
+        ru: "История компании",
+        en: "Company history"
     }
 };
