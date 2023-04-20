@@ -16,6 +16,8 @@ from forms.login import LoginForm
 from forms.admin import EditingForm
 from helpers.password_correct import password_correct
 from helpers.name_correct import name_correct
+from helpers.company_column import company_check
+from helpers.chapter_company import check_chapter
 
 load_dotenv()
 app = Flask(__name__)
@@ -123,12 +125,7 @@ def login():
 
 @app.route('/<company>/achievements')
 def achievements(company):
-    if company == "google":
-        company_table = Google
-    elif company == "yandex":
-        company_table = Yandex
-    else:
-        company_table = OpenAI
+    company_table = company_check(company, [Google, Yandex, OpenAI])
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.key_appointments == 1).all()
     list_data = []
@@ -139,12 +136,7 @@ def achievements(company):
 
 @app.route('/<company>/developers')
 def developers(company):
-    if company == "google":
-        company_table = Google
-    elif company == "yandex":
-        company_table = Yandex
-    else:
-        company_table = OpenAI
+    company_table = company_check(company, [Google, Yandex, OpenAI])
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.key_appointments == 2).all()
     list_data = []
@@ -155,12 +147,7 @@ def developers(company):
 
 @app.route('/<company>/history')
 def history(company):
-    if company == "google":
-        company_table = Google
-    elif company == "yandex":
-        company_table = Yandex
-    else:
-        company_table = OpenAI
+    company_table = company_check(company, [Google, Yandex, OpenAI])
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.key_appointments == 3).all()
     list_data = []
@@ -172,19 +159,8 @@ def history(company):
 @app.route("/add_text/<company>/<chapter>", methods=['GET', 'POST'])
 def add_text(company, chapter):
     form = EditingForm()
-    if company == "google":
-        company_table = Google()
-    elif company == "yandex":
-        company_table = Yandex()
-    else:
-        company_table = OpenAI()
-
-    if chapter == "achievements":
-        key_appointments_company = 1
-    elif chapter == "developers":
-        key_appointments_company = 2
-    else:
-        key_appointments_company = 3
+    company_table = company_check(company, [Google, Yandex, OpenAI])
+    key_appointments_company = check_chapter(chapter)
     company_info = company_table
     if request.method == "POST":
         file = request.files['file']
@@ -212,12 +188,7 @@ def add_text(company, chapter):
 @login_required
 def editing_text(company, id):
     form = EditingForm()
-    if company == "google":
-        company_table = Google
-    elif company == "yandex":
-        company_table = Yandex
-    else:
-        company_table = OpenAI
+    company_table = company_check(company, [Google, Yandex, OpenAI])
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.id == id).first()
     if request.method == "GET":
@@ -240,12 +211,7 @@ def editing_text(company, id):
 @app.route('/delete_text/<company>/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_text(company, id):
-    if company == "google":
-        company_table = Google
-    elif company == "yandex":
-        company_table = Yandex
-    else:
-        company_table = OpenAI
+    company_table = company_check(company, [Google, Yandex, OpenAI])
     db_sess = db_session.create_session()
     text = db_sess.query(company_table).filter(company_table.id == id).first()
     if text:
