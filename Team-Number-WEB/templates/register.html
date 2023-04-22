@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}<title data-lang="register_page-title">Регистрация</title>{% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="languages__btn">
+            <button class="header__btn languages__btn" data-btn="ru">Ru</button>
+            |
+            <button class="header__btn languages__btn" data-btn="en">En</button>
+        </div>
+    </div>
+    <div class="form-box-register">
+        <div class="form-value">
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <h2 class="multi__text" data-lang="register_page-0" style="color:#ffffff">Регистрация</h2>
+                <div class="inputbox">
+                    {{ form.email(type="email") }}
+                    <label class="multi__text" data-lang="register_page-1">{{ form.email.label }}</label>
+                </div>
+                <div class="inputbox">
+                    {{ form.password(type="password") }}
+                    <label class="multi__text" data-lang="register_page-2">{{ form.password.label }}</label>
+                </div>
+                <div class="inputbox">
+                    {{ form.password_again(type="password") }}
+                    <label class="multi__text" data-lang="register_page-3">{{ form.password_again.label }}</label>
+                </div>
+                <div class="inputbox">
+                    {{ form.name }}
+                    <label class="multi__text" data-lang="register_page-4">{{ form.name.label }}</label>
+                </div>
+                <button type="submit" class="multi__text" data-lang="register_page-5">{{ form.submit.button }}</button>
+                <div class="message-error">{{ message }}</div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
