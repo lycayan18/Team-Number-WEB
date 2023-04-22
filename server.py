@@ -3,14 +3,14 @@ from os.path import join, dirname, realpath
 import random
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, redirect, abort, request
+from flask import Flask, render_template, redirect, abort, request, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 
 
 from data import db_session
 from data.users import User
-from data.template_text import HomePage, Google, Yandex, OpenAI
+from data.template_text import HomePage, Google, Yandex, OpenAI, Comment
 from forms.register import RegisterForm
 from forms.login import LoginForm
 from forms.admin import EditingForm
@@ -27,7 +27,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 login_manager = LoginManager()
 login_manager.init_app(app)
-
+comments = []
 
 @app.route("/")
 def home():
@@ -223,15 +223,51 @@ def delete_text(company, id):
     return redirect('/')
 
 
-@app.route("/comments")
-def title_comment():
-    return render_template("comment.html")
+@app.route('/comments', methods=['GET'])
+def get_comments():
+    global comments
+    db_sess = db_session.create_session()
+    users = db_sess.query(Comment)
+    users_dict = [user.__dict__ for user in users]
+    for i in range(len(users_dict)):
+        comment = {
+            'name': users_dict[i]['name'],
+            'body': users_dict[i]['body'],
+            'time': users_dict[i]['time']
+        }
+        comments.append(comment)
+    all_comment = comments
+    comments = []
+    return render_template('comment.html', comments=all_comment)
 
 
-def main():
-    db_session.global_init("db/database.db")
+@app.route('/comments', methods=['POST'])
+def add_comment():
+    data = request.get_json()
+    try:
+        db_sess = db_session.create_session()
+        comment = {
+            'name': data[0]['name'],
+            'body': data[0]['body'],
+            'time': data[0]['time']
+        }
+        coment = Comment()
+        coment.time = comment['time']
+        coment.body = comment['body']
+        coment.name = comment['name']
+        db_sess.add(coment)
+        db_sess.commit()
+        response = {
+            'success': True,
+            'message': 'Комментарий успешно добавлен'
+        }
+        return jsonify(response)
+    except IndexError:
+        return ""
+
+
+db_session.global_init("db/database.db")
 
 
 if __name__ == '__main__':
-    main()
     app.run()

@@ -46,3 +46,11 @@ class OpenAI(SqlAlchemyBase):
     color = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     img = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     key_appointments = sqlalchemy.Column(sqlalchemy.Integer)
+
+
+class Comment(SqlAlchemyBase):
+    __tablename__ = 'comments'
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    time = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
+    name = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
+    body = sqlalchemy.Column(sqlalchemy.Text, nullable=True)

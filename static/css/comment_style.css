@@ -1,22 +1,14 @@
-body {
-  font-family: "Comfortaa", sans-serif;
-
-}
-
 p {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .font_block {
-  font-size: 28px;
-  margin: 170px 650px;
+    font-size: 28px;
 }
 
 .position {
-  position: fixed;
-  width: 27%;
-  margin-left: 10px;
-  margin-top: 10px;
+    position: fixed;
+    width: 27%;
 }
 
 .scroll_panel {
@@ -89,13 +81,4 @@ p {
   .scroll_panel {
     display: none;
   }
-}
-
-.home_button{
-  width: 100px;
-}
-
-
-.h_comments{
-  margin-top: 12px;
 }

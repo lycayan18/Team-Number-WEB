@@ -8,9 +8,8 @@ document.getElementById('comment-add').onclick = function(){
         let comment = {
             name : commentName.value,
             body : commentBody.value,
-            time : Math.floor(Date.now() / 1000)
+            time : timeConverter(Math.floor(Date.now() / 1000))
         }
-
         commentName.value = '';
         commentBody.value = '';
         comments.push(comment);
@@ -19,13 +18,30 @@ document.getElementById('comment-add').onclick = function(){
     }
 }
 
-function saveComments(){
-    localStorage.setItem('comments', JSON.stringify(comments));
+function saveComments() {
+  fetch('/comments', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'    },
+    body: JSON.stringify(comments)
+  })
+  .then(response => response.json())
+  .catch(error => console.error('Ошибка:', error));
 }
 
-function loadComments(){
-    if (localStorage.getItem('comments')) comments = JSON.parse(localStorage.getItem('comments'));
-    showComments();
+function loadComments() {
+  fetch('/comments', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'    },
+    body: JSON.stringify(comments)
+  })
+  .then(response => response.json())
+  .then(data => {
+      comments = data;
+      showComments()
+  })
+  .catch(error => console.error('Ошибка:', error));
 }
 
 function showComments (){
@@ -58,4 +74,8 @@ function scrollTopAnimated() {
 
 function scrollDownAnimated() {
     $('html, body').animate({scrollTop: $(document).height() - $(window).height()}, 600);
+}
+
+window.onload=function(){
+     window.scrollTo(0,document.body.scrollHeight);
 }
