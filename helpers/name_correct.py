@@ -7,4 +7,3 @@ def name_correct(name_user):
     if name_user.strip()[0] == "." or name_user.strip()[-1] == ".":
         return [False, "Имя пользователя не должно заканчиваться или начинаться на знак: ."]
     return [True]
-

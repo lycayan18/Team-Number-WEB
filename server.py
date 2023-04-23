@@ -7,7 +7,6 @@ from flask import Flask, render_template, redirect, abort, request, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 
-
 from data import db_session
 from data.users import User
 from data.template_text import HomePage, Google, Yandex, OpenAI, Comment
@@ -28,6 +27,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 login_manager = LoginManager()
 login_manager.init_app(app)
 comments = []
+
 
 @app.route("/")
 def home():
@@ -267,7 +267,6 @@ def add_comment():
 
 
 db_session.global_init("db/database.db")
-
 
 if __name__ == '__main__':
     app.run()

@@ -10,4 +10,3 @@ def password_correct(password):
     if (any(i.isdigit() for i in password)) is False:
         return [False, "Пароль должен содержать хотя бы одну цифру"]
     return [True]
-

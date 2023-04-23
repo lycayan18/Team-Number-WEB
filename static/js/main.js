@@ -92,5 +92,3 @@ function checkBrowserLang() {
         return navLang;
     }
 }
-
-console.log(registerTexts);
